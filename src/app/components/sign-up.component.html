@@ -1,0 +1,93 @@
+<!--heading-->
+<header>
+  <h1 class="text-center Sign-up-label my-4">SIGN UP</h1>
+</header>
+
+<!--form template-->
+<article>
+  <form class="form-styles container d-flex flex-column border p-3" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div>
+
+      <!--First Name User Input-->
+      <div class="form-fields mb-3">
+        <label class="col-form-label" for='firstName'>First Name :</label>
+        <input class="col-sm-12" type="text" id="firstName" formControlName="firstName" name="firstName"
+          (blur)='checkIsPasswordValid()' required>
+
+        <!--Error messages to be displayed if the first name input is invalid-->
+        <div
+          *ngIf="signUpFormControls.firstName.invalid && (signUpFormControls.firstName.dirty || signUpFormControls.firstName.touched)"
+          role="alert">
+          <small class="text-danger" *ngIf="signUpFormControls.firstName.errors?.required">
+            First Name is required.
+          </small>
+        </div>
+      </div>
+
+      <!--Last Name User Input-->
+      <div class="form-fields mb-3">
+        <label class="col-form-label" for='lastName'>Last Name :</label>
+        <input class="col-sm-12" type="text" id="LastName" formControlName="lastName" name="lastName"
+          (blur)='checkIsPasswordValid()'>
+
+        <!--Error messages to be displayed if the last name input is invalid-->
+        <div
+          *ngIf="signUpFormControls.lastName.invalid && (signUpFormControls.lastName.dirty || signUpFormControls.lastName.touched)"
+          role="alert">
+          <small class="text-danger" *ngIf="signUpFormControls.lastName.errors?.required">
+            Last Name is required.
+          </small>
+        </div>
+      </div>
+
+      <!--Email User Input-->
+      <div class="form-fields mb-3">
+        <label class="col-form-label" for='email'>Email Id:</label>
+        <input class="col-sm-12" type="text" id="email" formControlName="email" placeholder="frontend@fedex.com">
+
+        <!--Error messages to be displayed if the email input is invalid-->
+        <div
+          *ngIf="signUpFormControls.email.invalid && (signUpFormControls.email.dirty || signUpFormControls.email.touched)"
+          role="alert">
+          <ng-container *ngIf="signUpFormControls.email.errors as errors">
+            <small class="text-danger" *ngIf="errors.required">
+              Email Id is required.
+            </small>
+            <small class="text-danger" *ngIf="errors.pattern">
+              Please enter correct email id.
+            </small>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--Password User Input-->
+      <div class="form-fields mb-3">
+        <label class="col-form-label" for='password'>Password :</label>
+        <input class="col-sm-12" type="password" id="password" formControlName="password">
+
+        <!--Error messages to be displayed if the password input is invalid-->
+        <div
+          *ngIf="signUpFormControls.password.invalid && (signUpFormControls.password.dirty || signUpFormControls.password.touched)"
+          class="form-field-error-msg-email" role="alert">
+          <small class="text-danger" *ngIf="signUpForm.get('password')?.hasError('required')">Password is
+            required</small>
+          <small class="text-danger" *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least
+            8
+            characters long</small>
+          <small class="text-danger" *ngIf="signUpForm.get('password')?.hasError('pattern')">Password must contain
+            uppercase and lowercase
+            letters</small>
+          <small class="text-danger" *ngIf="signUpForm.get('password')?.hasError('forbiddenValue')">Password must not
+            contain first name or last
+            name</small>
+        </div>
+      </div>
+
+      <div class="col-12 mt-5 mb-3 text-center">
+        <button class="submit-btn" type="submit" [disabled]="!signUpForm.valid">Submit</button>
+      </div>
+
+    </div>
+
+  </form>
+</article>

@@ -1,0 +1,29 @@
+.form-styles {
+  align-items: center;
+  position: relative;
+}
+
+.submit-btn {
+  color: #fff;
+  font-family: 'Lato';
+  background-color: #f60;
+}
+
+.Sign-up-label {
+  color: #4d148c;
+}
+
+.form-field-error-msg-email {
+  display: grid;
+  position: absolute;
+}
+
+::placeholder {
+  color: lightgray;
+}
+
+@media (min-width: 280px) and (max-width: 576px) {
+  .form-styles {
+    width: min-content;
+  }
+}
