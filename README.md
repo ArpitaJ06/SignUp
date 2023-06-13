@@ -17,7 +17,7 @@ Before running this application, ensure that you have the following installed:
 Follow the steps below to run and build the project:
 
 1. Clone the repository:
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/ArpitaJ06/SignUp.git
 
 Alternatively, you can download the repository as a ZIP file and extract it.
 
